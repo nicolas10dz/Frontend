@@ -1,0 +1,94 @@
+:root {
+  --fondo: #f4f5f7;
+  --superficie: #ffffff;
+  --borde: #e2e4e9;
+  --texto: #1f2430;
+  --texto-suave: #5b6472;
+  --acento: #1e5eff;
+  --exito: #16803c;
+  --exito-fondo: #e3f5ea;
+  --aviso: #b26b00;
+  --aviso-fondo: #fdf1dc;
+  --peligro: #c62828;
+  --peligro-fondo: #fdeaea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: 0.5rem;
+  background: var(--superficie);
+  color: var(--texto);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  border: 1px solid var(--borde);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  background: var(--superficie);
+  color: var(--texto);
+  transition:
+    filter 0.15s ease,
+    background 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--fondo);
+}
+
+.btn--primario {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+}
+
+.btn--primario:hover {
+  filter: brightness(0.95);
+  background: var(--acento);
+}
+
+.btn--peligro {
+  background: var(--peligro);
+  border-color: var(--peligro);
+  color: #fff;
+}
+
+.btn--peligro:hover {
+  filter: brightness(0.95);
+  background: var(--peligro);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.alerta {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.alerta--error {
+  background: var(--peligro-fondo);
+  color: var(--peligro);
+  border: 1px solid var(--peligro);
+}

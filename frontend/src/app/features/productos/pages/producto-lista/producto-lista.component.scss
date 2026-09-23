@@ -1,0 +1,39 @@
+.producto-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.producto-lista__fila {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.producto-lista__estado {
+  margin: 0;
+  color: var(--texto-suave);
+}
+
+@media (min-width: 768px) {
+.producto-lista__acciones {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.producto-lista__fila {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .producto-lista__fila app-producto-stats {
+    flex: 2;
+  }
+
+  .producto-lista__fila app-producto-filtro {
+    flex: 3;
+  }
+}

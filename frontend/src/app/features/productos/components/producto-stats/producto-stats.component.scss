@@ -1,0 +1,24 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.stats__item {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+}
+
+.stats__label {
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+.stats__valor {
+  margin: 0.2rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}

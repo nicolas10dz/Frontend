@@ -1,0 +1,5 @@
+<div class="producto-grid">
+  @for (producto of items(); track producto.id) {
+    <app-producto-card [producto]="producto" (eliminar)="eliminar.emit($event)" />
+  }
+</div>

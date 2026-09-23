@@ -1,0 +1,70 @@
+<main class="producto-lista">
+  @if (store.isLoading() && !store.hasLoaded()) {
+    <app-panel-seccion>
+      <p class="producto-lista__estado">Cargando productos…</p>
+    </app-panel-seccion>
+  } @else if (store.error() && !store.hasLoaded()) {
+    <app-panel-seccion>
+      <app-estado-vacio
+        titulo="No se pudieron cargar los productos"
+        [mensaje]="store.error()"
+      >
+        <button type="button" class="btn btn--primario" (click)="store.reload()">Reintentar</button>
+      </app-estado-vacio>
+    </app-panel-seccion>
+  } @else if (!store.hasItems()) {
+    <app-panel-seccion>
+      <app-estado-vacio
+        titulo="Aún no hay productos"
+        mensaje="El catálogo está vacío. Agrega el primer producto."
+      >
+        <a class="btn btn--primario" routerLink="/productos/nuevo">Agregar producto</a>
+      </app-estado-vacio>
+    </app-panel-seccion>
+  } @else {
+    @if (store.mutationError()) {
+      <div class="alerta alerta--error" role="alert">{{ store.mutationError() }}</div>
+    }
+
+    <div class="producto-lista__acciones">
+      <a class="btn btn--primario" routerLink="/productos/nuevo">Nuevo producto</a>
+    </div>
+
+    <div class="producto-lista__fila">
+      <app-producto-stats [items]="store.items()" />
+      <app-producto-filtro
+        [(busqueda)]="filtro"
+        [(categoria)]="categoriaSel"
+        [categorias]="categorias()"
+      />
+    </div>
+
+    <app-panel-seccion titulo="Productos">
+      @if (productosFiltrados().length === 0) {
+        <app-estado-vacio
+          titulo="Sin resultados"
+          mensaje="Ningún producto coincide con los filtros aplicados."
+        >
+          <button type="button" class="btn" (click)="limpiarFiltros()">Limpiar filtros</button>
+        </app-estado-vacio>
+      } @else {
+        <app-producto-grid
+          [items]="productosFiltrados()"
+          (eliminar)="solicitarEliminar($event)"
+        />
+      }
+    </app-panel-seccion>
+  }
+</main>
+
+<app-confirm-dialog
+  [visible]="productoAEliminar() !== null"
+  [cargando]="store.saving()"
+  (confirmar)="confirmarEliminacion()"
+  (cancelar)="cancelarEliminacion()"
+>
+  @if (productoAEliminar(); as producto) {
+    <p>¿Deseas eliminar <strong>{{ producto.nombre }}</strong> del catálogo?</p>
+  }
+  <p>Esta acción no se puede deshacer.</p>
+</app-confirm-dialog>

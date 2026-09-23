@@ -1,0 +1,10 @@
+<div class="estado-vacio">
+  <div class="estado-vacio__icono" aria-hidden="true"></div>
+  <h3 class="estado-vacio__titulo">{{ titulo() }}</h3>
+  @if (mensaje()) {
+    <p class="estado-vacio__mensaje">{{ mensaje() }}</p>
+  }
+  <div class="estado-vacio__acciones">
+    <ng-content />
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<main class="producto-form">
+  <app-panel-seccion [titulo]="titulo()">
+    @if (cargandoEdicion()) {
+      <p class="producto-form__estado">Cargando producto…</p>
+    } @else if (errorEdicion()) {
+      <app-estado-vacio titulo="No se pudo cargar el producto" [mensaje]="errorEdicion()">
+        <a class="btn" routerLink="/dashboard">Volver al catálogo</a>
+      </app-estado-vacio>
+    } @else if (noEncontrado()) {
+      <app-estado-vacio
+        titulo="Producto no encontrado"
+        mensaje="El producto que deseas editar no existe o fue eliminado."
+      >
+        <a class="btn" routerLink="/dashboard">Volver al catálogo</a>
+      </app-estado-vacio>
+    } @else {
+      @if (errorGlobal()) {
+        <div class="alerta alerta--error producto-form__alerta" role="alert">
+          {{ errorGlobal() }}
+        </div>
+      }
+
+      <app-producto-formulario
+        [formulario]="f"
+        [guardando]="store.saving()"
+        (cancelar)="cancelar()"
+      />
+    }
+  </app-panel-seccion>
+</main>

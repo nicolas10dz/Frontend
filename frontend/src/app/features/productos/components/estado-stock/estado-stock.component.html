@@ -1,0 +1,11 @@
+@switch (tipo()) {
+  @case ('agotado') {
+    <span class="badge badge--peligro">Agotado</span>
+  }
+  @case ('bajo') {
+    <span class="badge badge--aviso">Stock bajo</span>
+  }
+  @default {
+    <span class="badge badge--exito">Disponible</span>
+  }
+}

@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: plaza
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/market
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver # Driver mysql
+
+  jpa: # Configuración de JPA/Hibernate (ORM)
+    database-platform: org.hibernate.dialect.MySQLDialect # Dialecto para MySQL: traduce SQL a sintaxis MySQL
+    hibernate: # Subconfig de Hibernate
+      ddl-auto: none # Crear/Actualizar tablas automaticamente
+    show-sql: true # Mostrar SQL generado en los logs
+    properties: # Propiedades extras de hibernate
+      hibernate:
+        format-sql: true # Formate SQL en los log para mayor legibilidad  
+
+# Configuracion del puerto
+server:
+  port: 9090
+  servlet:
+    context-path: /api/v1/wishlist_db # Context path para toda la aplicación

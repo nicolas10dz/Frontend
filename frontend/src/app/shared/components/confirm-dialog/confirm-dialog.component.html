@@ -1,0 +1,30 @@
+@if (visible()) {
+  <div class="dialogo-overlay" (click)="cancelar.emit()">
+    <div
+      class="dialogo"
+      role="dialog"
+      aria-modal="true"
+      (click)="$event.stopPropagation()"
+    >
+      <header class="dialogo__cabecera">
+        <h3 class="dialogo__titulo">Confirmar eliminación</h3>
+      </header>
+      <div class="dialogo__cuerpo">
+        <ng-content />
+      </div>
+      <footer class="dialogo__pie">
+        <button type="button" class="btn" [disabled]="cargando()" (click)="cancelar.emit()">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn--peligro"
+          [disabled]="cargando()"
+          (click)="confirmar.emit()"
+        >
+          Eliminar
+        </button>
+      </footer>
+    </div>
+  </div>
+}

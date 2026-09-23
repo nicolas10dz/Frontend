@@ -1,0 +1,40 @@
+.dialogo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 18, 25, 0.45);
+}
+
+.dialogo {
+  width: 100%;
+  max-width: 26rem;
+  background: var(--superficie);
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.dialogo__cabecera {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.dialogo__titulo {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.dialogo__cuerpo {
+  padding: 1.25rem;
+  color: var(--texto-suave);
+}
+
+.dialogo__pie {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--borde);
+}

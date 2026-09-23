@@ -1,0 +1,112 @@
+<form class="formulario" [formRoot]="formulario()" aria-label="Formulario de producto">
+  <div class="formulario__campo">
+    <label class="formulario__etiqueta" for="producto-nombre">Nombre *</label>
+    <input
+      id="producto-nombre"
+      type="text"
+      [formField]="formulario().nombre"
+      placeholder="Ej.: Leche fresca 1L"
+    />
+    @if (formulario().nombre().invalid() && formulario().nombre().touched()) {
+      <ul class="formulario__errores">
+        @for (error of formulario().nombre().errors(); track error.kind) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="formulario__campo">
+    <label class="formulario__etiqueta" for="producto-descripcion">Descripción *</label>
+    <textarea
+      id="producto-descripcion"
+      rows="3"
+      [formField]="formulario().descripcion"
+      placeholder="Describe el producto"
+    ></textarea>
+    @if (formulario().descripcion().invalid() && formulario().descripcion().touched()) {
+      <ul class="formulario__errores">
+        @for (error of formulario().descripcion().errors(); track error.kind) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="formulario__fila">
+    <div class="formulario__campo">
+      <label class="formulario__etiqueta" for="producto-precio">Precio *</label>
+      <input
+        id="producto-precio"
+        type="number"
+        step="0.01"
+        [formField]="formulario().precio"
+      />
+      @if (formulario().precio().invalid() && formulario().precio().touched()) {
+        <ul class="formulario__errores">
+          @for (error of formulario().precio().errors(); track error.kind) {
+            <li>{{ error.message }}</li>
+          }
+        </ul>
+      }
+    </div>
+
+    <div class="formulario__campo">
+      <label class="formulario__etiqueta" for="producto-stock">Stock *</label>
+      <input
+        id="producto-stock"
+        type="number"
+        step="1"
+        [formField]="formulario().stock"
+      />
+      @if (formulario().stock().invalid() && formulario().stock().touched()) {
+        <ul class="formulario__errores">
+          @for (error of formulario().stock().errors(); track error.kind) {
+            <li>{{ error.message }}</li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+
+  <div class="formulario__campo">
+    <label class="formulario__etiqueta" for="producto-categoria">Categoría</label>
+    <input
+      id="producto-categoria"
+      type="text"
+      [formField]="formulario().categoria"
+      placeholder="Ej.: Lácteos"
+    />
+    @if (formulario().categoria().invalid() && formulario().categoria().touched()) {
+      <ul class="formulario__errores">
+        @for (error of formulario().categoria().errors(); track error.kind) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="formulario__campo">
+    <label class="formulario__etiqueta" for="producto-imagen">URL de la imagen</label>
+    <input
+      id="producto-imagen"
+      type="url"
+      [formField]="formulario().imagenUrl"
+      placeholder="https://…"
+    />
+    @if (formulario().imagenUrl().invalid() && formulario().imagenUrl().touched()) {
+      <ul class="formulario__errores">
+        @for (error of formulario().imagenUrl().errors(); track error.kind) {
+          <li>{{ error.message }}</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <div class="formulario__acciones">
+    <button type="button" class="btn" (click)="cancelar.emit()">Cancelar</button>
+    <button type="submit" class="btn btn--primario" [disabled]="guardarDeshabilitado()">
+      {{ guardando() ? 'Guardando…' : 'Guardar' }}
+    </button>
+  </div>
+</form>

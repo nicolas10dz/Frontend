@@ -1,0 +1,11 @@
+<section class="panel">
+  @if (titulo()) {
+    <header class="panel__cabecera">
+      <h2 class="panel__titulo">{{ titulo() }}</h2>
+      <ng-content select="[acciones]" />
+    </header>
+  }
+  <div class="panel__cuerpo">
+    <ng-content />
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<div class="filtros">
+  <label class="filtros__campo filtros__campo--buscador">
+    <span class="filtros__etiqueta">Buscar</span>
+    <input
+      #buscador
+      type="search"
+      [value]="busqueda()"
+      (input)="busqueda.set(buscador.value)"
+      placeholder="Nombre o descripción"
+    />
+  </label>
+
+  <label class="filtros__campo">
+    <span class="filtros__etiqueta">Categoría</span>
+    <select #selector [value]="categoria()" (change)="categoria.set(selector.value)">
+      <option value="">Todas</option>
+      @for (cat of categorias(); track cat) {
+        <option [value]="cat">{{ cat }}</option>
+      }
+    </select>
+  </label>
+</div>

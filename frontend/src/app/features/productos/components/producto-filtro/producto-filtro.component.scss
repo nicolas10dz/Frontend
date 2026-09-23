@@ -1,0 +1,21 @@
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.filtros__campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.filtros__campo--buscador {
+  flex: 1 1 14rem;
+}
+
+.filtros__etiqueta {
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}

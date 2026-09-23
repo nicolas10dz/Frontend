@@ -1,0 +1,8 @@
+<dl class="stats">
+  @for (stat of stats(); track stat.label) {
+    <div class="stats__item">
+      <dt class="stats__label">{{ stat.label }}</dt>
+      <dd class="stats__valor">{{ stat.valor }}</dd>
+    </div>
+  }
+</dl>

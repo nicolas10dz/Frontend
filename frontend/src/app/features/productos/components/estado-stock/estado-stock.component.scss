@@ -1,0 +1,22 @@
+.badge {
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge--peligro {
+  background: var(--peligro-fondo);
+  color: var(--peligro);
+}
+
+.badge--aviso {
+  background: var(--aviso-fondo);
+  color: var(--aviso);
+}
+
+.badge--exito {
+  background: var(--exito-fondo);
+  color: var(--exito);
+}
