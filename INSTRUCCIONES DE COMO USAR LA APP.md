@@ -206,3 +206,30 @@ ng serve
 > Si `ng` no está en el PATH: `.\node_modules\.bin\ng.cmd serve`
 
 Listo: abre `http://localhost:4200` y la API estará disponible en `http://localhost:9090/api/v1/wishlist_db`.
+
+
+
+## 13. CREACION DE BASE DE DATOS
+-- 1) Crear la base de datos
+CREATE DATABASE IF NOT EXISTS market;
+
+USE market;
+
+-- 2) Crear la tabla productos
+-- (coincide con la entidad Producto del backend)
+CREATE TABLE IF NOT EXISTS productos (
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre      VARCHAR(255)        NOT NULL,
+    descripcion VARCHAR(255)        NOT NULL,
+    precio      DECIMAL(10, 2)      NOT NULL,
+    stock       INT                 NOT NULL,
+    categoria   VARCHAR(255),
+    imagen_url  VARCHAR(255)
+);
+
+-- 3) (Opcional) Datos de ejemplo
+INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen_url)
+VALUES
+    ('Manzana Roja', 'Manzana fresca de la mejor calidad', 2500.00, 50, 'Frutas', NULL),
+    ('Leche Entera', 'Leche entera 1L', 4200.00, 30, 'Lácteos', NULL),
+    ('Arroz', 'Arroz blanco 1kg', 4800.00, 100, 'Granos', NULL);
