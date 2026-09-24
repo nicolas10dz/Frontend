@@ -57,7 +57,7 @@ La aplicación ya viene con la tabla `productos` (id, nombre, descripcion, preci
 Desde la raíz del proyecto:
 
 ```
-C:\Users\Nicolas\Desktop\plaza
+cd plaza
 ```
 
 Ejecuta el siguiente comando:
